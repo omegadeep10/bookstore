@@ -17,6 +17,9 @@
     "url": "https://github.com/omegadeep10/bookstore/issues"
   },
   "homepage": "https://github.com/omegadeep10/bookstore#readme",
+  "engines": {
+    "node": "4.4.5"
+  },
   "dependencies": {
     "express": "^4.14.0"
   }
