@@ -18,9 +18,8 @@ app.get('/', function(req, res) {
             console.log("Connection error: ", err);
             throw err;
         }
-        response.send(['Hello World!', rows]);
+        res.send(['Hello World!', rows]);
     });
-    res.send('Hello World!');
 });
 
 
