@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Store</title>
+    <title>Deep's Bookstore</title>
+    <link href="https://fonts.googleapis.com/css?family=Francois+One|Open+Sans" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-    <h1>Hello World.</h1>
-    <p><%= JSON.stringify(data) %></p>
+    <nav>
+        <ul class="cf">
+            <li><a href="/register">Register</a></li>
+            <li><a href="/store">Store</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div>
+            <h1>Welcome to Deep's Bookstore.</h1>
+            <p>This is a demo app created for Database Programming class.</p>
+        </div>
+        <div class="account-option">
+            <h2>Don't have an account?</h2>
+            <a href="/register" class="button">Register Now</a>
+        </div>
+        <div class="account-option">
+            <h2>Already have an account?</h2>
+            <a href="/login" class="button">Login</a>
+        </div>
+        
+    </div>  
 </body>
 </html>

@@ -1,0 +1,60 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+.cf:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+nav ul {
+  max-width: 980px;
+  list-style: none;
+  margin: 40px auto; }
+nav li {
+  display: inline-block;
+  margin: 10px;
+  float: right; }
+nav a {
+  text-decoration: none;
+  color: #444;
+  font-family: "Open Sans", Helvetica, sans-serif; }
+  nav a:hover {
+    color: #ab3428; }
+
+.main-content {
+  max-width: 980px;
+  margin: 0 auto; }
+  .main-content h1 {
+    font-family: "Francois One", Georgia, sans-serif;
+    font-weight: normal;
+    margin: 5px 0; }
+  .main-content p {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    margin: 0;
+    color: #666; }
+  .main-content .button {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    padding: 8px 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333; }
+    .main-content .button:hover {
+      cursor: pointer;
+      background-color: #ab3428;
+      border: 1px solid #ab3428;
+      color: white; }
+  .main-content .account-option {
+    display: inline-block;
+    margin: 40px 50px 40px 0; }
+    .main-content .account-option h2 {
+      font-family: "Open Sans", Helvetica, sans-serif;
+      font-weight: normal;
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #888; }
+
+/*# sourceMappingURL=style.css.map */
