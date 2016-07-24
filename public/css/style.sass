@@ -16,10 +16,17 @@ $main: #ab3428
 $secondary: #5c9ead
 
 nav
+    h1
+        float: left
+        font-family: $heading
+        font-size: 20px 
+        font-weight: normal
+
     ul
         max-width: 980px
         list-style: none
         margin: 40px auto
+        padding-left: 0
     
     li
         display: inline-block
@@ -50,6 +57,7 @@ nav
 
     .button
         font-family: $paragraph
+        font-size: 14px
         padding: 8px 15px
         border: 1px solid #555
         border-radius: 5px
@@ -72,3 +80,37 @@ nav
             font-size: 18px
             margin-bottom: 25px
             color: #888
+
+form
+    h2
+        font-family: $heading
+        font-weight: normal
+        margin: 30px 0
+
+    label
+        font-family: $paragraph
+        margin-right: 5px
+
+        &:after
+            content: ':'
+
+    .form-group
+        margin: 20px 0
+
+.messages
+    .notify
+        margin: 5px 5px 5px 0
+        padding: 10px 20px
+        display: inline-block
+
+    .error
+        background-color: $main
+        color: white
+
+    .success
+        background-color: green
+        color: white
+
+        a
+            color: $secondary
+

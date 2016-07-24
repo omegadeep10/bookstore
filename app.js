@@ -6,14 +6,18 @@ var session = require('express-session');
 var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var passport = require('passport');
-var LocalStrategy = require('passport-local'), Strategy;
+var LocalStrategy = require('passport-local').Strategy;
+var pool = require('./db');
+
+
 
 //routes 
 var authRoutes = require('./src/routes/authRoutes');
 
 //init new express instance, setup port variable
 var app = express();
-
+//make database pool available throughout the app
+app.set('db', pool);
 
 //declare public, view directory and view engine
 app.use(express.static('public'));
@@ -63,15 +67,6 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', authRoutes);
-
-//mysql initialization
-var pool = mysql.createPool({
-    connectionLimit: 5,
-    host: 'us-cdbr-iron-east-04.cleardb.net',
-    user: 'b13e6ef2d95564',
-    password: 'b3f85481',
-    database: 'heroku_fb65db9133555c5'
-});
 
 
 /*app.get('/', function(req, res) {

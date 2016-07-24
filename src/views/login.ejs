@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Francois+One|Open+Sans" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <ul class="cf">
+            <a href="/"><h1>Deep's Bookstore</h1></a>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/store">Store</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div class="messages">
+            <% if(locals.errors) { %>
+                <% for (var i = 0; i < errors.length; i++){ %>
+                    <p class="notify error"><%=errors[i].msg %></p>
+                <% } %>
+            <% } %>
+
+            <% if (locals.success) { %>
+                    <p class="notify success">You have been successfully registered. <a href="/login">Login Now.</a></p>
+            <% } %>
+        </div>
+        <form action="/register" method="post">
+            <div class="basic-info">
+            <h2>Enter Your Information</h2>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>  
+</body>
+</html>
