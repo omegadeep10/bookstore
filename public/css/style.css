@@ -165,16 +165,16 @@ form .form-group {
     float: right;
     margin-top: 4px;
     color: #333; }
-  .cart .one-click-checkout {
+  .cart .checkout {
     font-family: "Open Sans", Helvetica, sans-serif;
     float: right;
     padding: 10px 15px;
     border: 1px solid #888;
     font-size: 14px;
-    margin: 20px 0 10px 0;
+    margin: 20px 0 10px 10px;
     text-decoration: none;
     color: black; }
-    .cart .one-click-checkout:hover {
+    .cart .checkout:hover {
       border: 1px solid #ab3428;
       background-color: #ab3428;
       color: white;

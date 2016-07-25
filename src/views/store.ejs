@@ -44,22 +44,23 @@
                 <h1>Your Cart</h1>
                 <% if (locals.cart) { %>
                     <% for(var i = 0; i < cart.length; i++) { %>
-                    <a href="/cart/remove/<%=cart.cart_id%>" class="cart-item">
+                    <a href="/cart/remove/<%=cart[0][i].cart_id%>" class="cart-item">
                         <span class="price"><%=cart[0][i].price%> x <%=cart[0][i].quantity%></span>
                         <h3><%=cart[0][i].title%></h3>
                     </a>
                     <% } %>
                 <% } %>
-                <a href="" class="one-click-checkout">One Click Checkout</a>
+                <a href="" class="one-click checkout">One Click</a>
+                <a href="" class="checkout">Checkout</a>
             </div>
 
             <div class="subjects">
                 <h1>Find By Subject</h1>
-                <a href="/sort/subject">Fantasy</a>
-                <a href="/sort/subject">Fiction</a>
-                <a href="/sort/subject">Science Fiction</a>
-                <a href="/sort/subject">Children</a>
-                <a href="/sort/subject">Autobiography</a>
+                <% if (locals.subjects) { %>
+                    <% for (var i = 0; i < subjects.length; i++){ %>
+                        <a href="/sort/<%=subjects[i].subject%>"><%=subjects[i].subject%></a>
+                    <% } %>
+                <% } %>
             </div>
         </div>
     </div>  
