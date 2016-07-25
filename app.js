@@ -9,15 +9,14 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var pool = require('./db');
 
+//routes, pass in the database connection
+var authRoutes = require('./src/routes/authRoutes')(pool);
+var storeRoutes = require('./src/routes/storeRoutes')(pool);
 
 
-//routes 
-var authRoutes = require('./src/routes/authRoutes');
 
 //init new express instance, setup port variable
 var app = express();
-//make database pool available throughout the app
-app.set('db', pool);
 
 //declare public, view directory and view engine
 app.use(express.static('public'));
@@ -35,10 +34,6 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }));
-
-//Passport init
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Express Validator
 app.use(expressValidator({
@@ -66,17 +61,14 @@ app.use(function(req, res, next) {
     next();
 });
 
+//Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 app.use('/', authRoutes);
+app.use('/store', storeRoutes);
 
-
-/*app.get('/', function(req, res) {
-    pool.query('SELECT * FROM books', function(err, rows, fields){
-        if (err) {
-            console.log("Connection error: ", err);
-        }
-        res.render('index', {data: rows});
-    });
-});*/
 
 var port = process.env.PORT || 5000;
 app.listen(port, function(err) {

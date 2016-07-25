@@ -8,10 +8,13 @@
 <body>
     <nav>
         <ul class="cf">
-            <li><a href="/register">Register</a></li>
+            <% if (locals.user) { %>
             <li><a href="/store">Store</a></li>
-            <li><a href="/login">Login</a></li>
             <li><a href="/logout">Logout</a></li>
+            <%} else { %>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+            <%} %>  
         </ul>
     </nav>
     <div class="main-content">

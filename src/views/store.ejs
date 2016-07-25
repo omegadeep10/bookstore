@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Francois+One|Open+Sans" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <ul class="cf">
+            <a href="/"><h1>Deep's Bookstore</h1></a>
+            <% if (locals.user) { %>
+            <li><a href="/store">Store</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <%} else { %>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+            <%} %>  
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div class="messages">
+            <% if(error_msg.length > 0) { %>
+                <p class="notify error"><%=error_msg %></p>
+            <% } %>
+            <% if(success_msg.length > 0) { %>
+                <p class="notify error"><%=success_msg %></p>
+            <% } %>
+            <% if(locals.errors) { %>
+                <% for (var i = 0; i < errors.length; i++){ %>
+                    <p class="notify error"><%=errors[i].msg %></p>
+                <% } %>
+            <% } %>
+
+            <% if (locals.success) { %>
+                    <p class="notify success">You have been successfully registered. <a href="/login">Login Now.</a></p>
+            <% } %>
+        </div>
+        <h1>Store</h1>
+    </div>  
+</body>
+</html>
