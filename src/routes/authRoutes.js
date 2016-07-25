@@ -108,6 +108,7 @@ authRouter.post('/login',
     passport.authenticate('local', { successRedirect: '/store', failureRedirect: '/login', failureFlash: true }),
     function(req, res) {
         req.flash('success_msg', 'Now logged in.');
+        res.redirect('/store', { error_msg: req.flash('error_msg'), success_msg: req.flash('success_msg'), user: req.user });
     });
 
 module.exports = function(dbConnection){

@@ -89,4 +89,117 @@ form .form-group {
   .messages .success a {
     color: #5c9ead; }
 
+.insecure-warning h2 {
+  font-family: "Francois One", Georgia, serif;
+  font-weight: normal;
+  font-size: 20px;
+  color: #f9564f;
+  margin-top: 100px; }
+.insecure-warning p {
+  max-width: 800px;
+  margin: 20px 0; }
+
+.books-list {
+  width: 65%;
+  display: inline-block;
+  vertical-align: top; }
+  .books-list .book-item {
+    margin: 10px 0;
+    padding: 10px 20px 10px 0;
+    display: block;
+    text-decoration: none; }
+    .books-list .book-item:hover {
+      cursor: pointer; }
+      .books-list .book-item:hover .hover-text:after {
+        content: "Click to add to cart";
+        float: right;
+        clear: both;
+        font-family: "Open Sans", Helvetica, sans-serif;
+        color: black;
+        font-size: 14px;
+        padding-top: 5px;
+        cursor: pointer; }
+    .books-list .book-item h3 {
+      font-family: "Francois One", Georgia, serif;
+      font-weight: normal;
+      font-size: 26px;
+      margin: 0;
+      color: black; }
+    .books-list .book-item .author {
+      font-family: "Open Sans", Helvetica, sans-serif;
+      font-size: 14px;
+      margin: 2px 0; }
+    .books-list .book-item .price {
+      float: right;
+      font-family: "Francois One", Georgia, serif;
+      font-size: 20px;
+      color: black;
+      margin-top: 6px; }
+
+.sidebar {
+  width: 34%;
+  display: inline-block;
+  vertical-align: top; }
+
+.cart {
+  vertical-align: top;
+  border: 1px solid #888;
+  padding: 10px 20px;
+  margin-left: 10%; }
+  .cart .cart-item {
+    margin: 10px 0;
+    text-decoration: none;
+    display: block; }
+  .cart h1 {
+    font-size: 25px;
+    margin-bottom: 30px; }
+  .cart h3 {
+    font-family: "Francois One", Georgia, serif;
+    font-weight: normal;
+    font-size: 18px;
+    margin: 0;
+    color: black; }
+  .cart .price {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 14px;
+    float: right;
+    margin-top: 4px;
+    color: #333; }
+  .cart .one-click-checkout {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    float: right;
+    padding: 10px 15px;
+    border: 1px solid #888;
+    font-size: 14px;
+    margin: 20px 0 10px 0;
+    text-decoration: none;
+    color: black; }
+    .cart .one-click-checkout:hover {
+      border: 1px solid #ab3428;
+      background-color: #ab3428;
+      color: white;
+      cursor: pointer; }
+
+.subjects {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid #888;
+  padding: 10px 20px;
+  margin-left: 10%;
+  margin-top: 20px; }
+  .subjects h1 {
+    font-size: 25px;
+    margin-bottom: 30px; }
+  .subjects a {
+    margin: 5px 5px 5px 0;
+    padding: 10px 20px;
+    display: inline-block;
+    background-color: #5c9ead;
+    text-decoration: none;
+    color: white;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 14px; }
+    .subjects a:hover {
+      background-color: #ab3428; }
+
 /*# sourceMappingURL=style.css.map */

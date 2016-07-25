@@ -114,3 +114,132 @@ form
         a
             color: $secondary
 
+.insecure-warning
+    h2
+        font-family: $heading
+        font-weight: normal
+        font-size: 20px
+        color: #f9564f
+        margin-top: 100px
+
+    p
+        max-width: 800px
+        margin: 20px 0
+
+.books-list
+    width: 65%
+    display: inline-block
+    vertical-align: top
+
+    .book-item
+        margin: 10px 0
+        padding: 10px 20px 10px 0
+        display: block
+        text-decoration: none
+
+        &:hover
+            cursor: pointer
+
+            .hover-text:after
+                content: 'Click to add to cart'
+                float: right
+                clear: both
+                font-family: $paragraph
+                color: black
+                font-size: 14px
+                padding-top: 5px
+                cursor: pointer
+
+        h3
+            font-family: $heading
+            font-weight: normal
+            font-size: 26px
+            margin: 0
+            color: black
+
+        .author
+            font-family: $paragraph
+            font-size: 14px
+            margin: 2px 0
+
+        .price
+            float: right
+            font-family: $heading
+            font-size: 20px
+            color: black
+            margin-top: 6px
+
+.sidebar
+    width: 34%
+    display: inline-block
+    vertical-align: top
+
+.cart
+    vertical-align: top
+    border: 1px solid #888
+    padding: 10px 20px
+    margin-left: 10%
+
+    .cart-item
+        margin: 10px 0
+        text-decoration: none
+        display: block
+
+    h1
+        font-size: 25px
+        margin-bottom: 30px
+    
+    h3
+        font-family: $heading
+        font-weight: normal
+        font-size: 18px
+        margin: 0
+        color: black
+
+    .price
+        font-family: $paragraph
+        font-size: 14px
+        float: right
+        margin-top: 4px
+        color: #333
+
+    .one-click-checkout
+        font-family: $paragraph
+        float: right
+        padding: 10px 15px
+        border: 1px solid #888
+        font-size: 14px
+        margin: 20px 0 10px 0
+        text-decoration: none
+        color: black
+
+        &:hover
+            border: 1px solid $main
+            background-color: $main
+            color: white
+            cursor: pointer
+
+.subjects
+    display: inline-block
+    vertical-align: top
+    border: 1px solid #888
+    padding: 10px 20px
+    margin-left: 10%
+    margin-top: 20px
+
+    h1
+        font-size: 25px
+        margin-bottom: 30px
+
+    a
+        margin: 5px 5px 5px 0
+        padding: 10px 20px
+        display: inline-block
+        background-color: $secondary
+        text-decoration: none
+        color: white
+        font-family: $paragraph
+        font-size: 14px
+
+        &:hover
+            background-color: $main
