@@ -110,6 +110,10 @@ form .form-group {
     text-decoration: none; }
     .books-list .book-item:hover {
       cursor: pointer; }
+      .books-list .book-item:hover h3 {
+        color: #ab3428; }
+      .books-list .book-item:hover .author, .books-list .book-item:hover .price {
+        color: #ab3428; }
       .books-list .book-item:hover .hover-text:after {
         content: "Click to add to cart";
         float: right;
@@ -150,6 +154,10 @@ form .form-group {
     margin: 10px 0;
     text-decoration: none;
     display: block; }
+    .cart .cart-item:hover h3 {
+      color: #ab3428; }
+    .cart .cart-item:hover .price {
+      color: #ab3428; }
   .cart h1 {
     font-size: 25px;
     margin-bottom: 30px; }

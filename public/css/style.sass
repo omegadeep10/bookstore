@@ -140,6 +140,12 @@ form
         &:hover
             cursor: pointer
 
+            h3
+                color: $main
+
+            .author, .price
+                color: $main
+
             .hover-text:after
                 content: 'Click to add to cart'
                 float: right
@@ -184,6 +190,13 @@ form
         margin: 10px 0
         text-decoration: none
         display: block
+
+        &:hover
+            h3
+                color: $main
+
+            .price
+                color: $main
 
     h1
         font-size: 25px

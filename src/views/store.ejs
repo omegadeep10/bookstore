@@ -30,7 +30,7 @@
         <div class="books-list">
             <% if (locals.books) { %>
                 <% for (var i = 0; i < books.length; i++){ %>
-                    <a href="/cart/<%=books[i].isbn%>" class="book-item">
+                    <a href="/store/cart/add/<%=books[i].book_id%>" class="book-item">
                         <span class="price"><%= books[i].price %></span>
                         <p class="hover-text"></p>
                         <h3><%= books[i].title %></h3>
@@ -43,14 +43,14 @@
             <div class="cart cf">
                 <h1>Your Cart</h1>
                 <% if (locals.cart) { %>
-                    <% for(var i = 0; i < cart.length; i++) { %>
-                    <a href="/cart/remove/<%=cart[0][i].cart_id%>" class="cart-item">
+                    <% for(var i = 0; i < cart[0].length; i++) { %>
+                    <a href="/store/cart/remove/<%=cart[0][i].cart_id%>" class="cart-item">
                         <span class="price"><%=cart[0][i].price%> x <%=cart[0][i].quantity%></span>
                         <h3><%=cart[0][i].title%></h3>
                     </a>
                     <% } %>
                 <% } %>
-                <a href="" class="one-click checkout">One Click</a>
+                <a href="/store/one-click" class="one-click checkout">One Click</a>
                 <a href="" class="checkout">Checkout</a>
             </div>
 
@@ -58,7 +58,7 @@
                 <h1>Find By Subject</h1>
                 <% if (locals.subjects) { %>
                     <% for (var i = 0; i < subjects.length; i++){ %>
-                        <a href="/sort/<%=subjects[i].subject%>"><%=subjects[i].subject%></a>
+                        <a href="/store/sort/<%=subjects[i].subject%>"><%=subjects[i].subject%></a>
                     <% } %>
                 <% } %>
             </div>
