@@ -10,8 +10,9 @@
         <ul class="cf">
             <a href="/"><h1>Deep's Bookstore</h1></a>
             <% if (locals.user) { %>
-            <li><a href="/store">Store</a></li>
             <li><a href="/logout">Logout</a></li>
+            <li><a href="/store">Store</a></li>
+            <li><a href="/store/orders">Orders</a></li>
             <%} else { %>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
@@ -20,11 +21,11 @@
     </nav>
     <div class="main-content">
         <div class="messages">
-            <% if(error_msg.length > 0) { %>
+            <% if(locals.error_msg.length > 0) { %>
                 <p class="notify error"><%=error_msg %></p>
             <% } %>
-            <% if(success_msg.length > 0) { %>
-                <p class="notify error"><%=success_msg %></p>
+            <% if(locals.success_msg.length > 0) { %>
+                <p class="notify success"><%=success_msg %></p>
             <% } %>
         </div>
         <div class="books-list">
@@ -51,7 +52,7 @@
                     <% } %>
                 <% } %>
                 <a href="/store/one-click" class="one-click checkout">One Click</a>
-                <a href="" class="checkout">Checkout</a>
+                <a href="/store/checkout" class="checkout">Checkout</a>
             </div>
 
             <div class="subjects">

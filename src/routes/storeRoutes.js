@@ -122,6 +122,23 @@ authRouter.get('/sort/:subject', ensureAuthenticated, function(req, res) {
     });
 });
 
+authRouter.get('/one-click', ensureAuthenticated, function(req, res) {
+    db.query('CALL oneClickCheckout(?)', [req.user.email], function(error, results, fields) {
+        if (error) throw error;
+        req.flash('success_msg', 'Your order has been placed.');
+        res.redirect('/store');
+    });
+});
+
+authRouter.get('/checkout', ensureAuthenticated, function(req, res) {
+    res.render('checkout', {
+        error_msg: req.flash('error_msg'), 
+        success_msg: req.flash('success_msg'), 
+        user: req.user
+    });
+});
+
+
 //this route takes in a database connection.
 module.exports = function(dbConnection){
     db = dbConnection;
