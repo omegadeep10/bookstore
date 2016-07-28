@@ -62,6 +62,18 @@ authRouter.get('/', ensureAuthenticated, function(req, res) {
     });
 });
 
+authRouter.get('/orders', ensureAuthenticated, function(req, res) {
+    db.query('CALL getOrders(?)', [req.user.email], function(error, results, fields) {
+        if (error) throw error;
+        res.render('orders', {
+            error_msg: req.flash('error_msg'), 
+            success_msg: req.flash('success_msg'), 
+            user: req.user,
+            orders: results
+        });
+    });
+});
+
 //removes a specific cart entry
 authRouter.get('/cart/remove/:cart_id', ensureAuthenticated, function(req, res) {
     var cart_id = req.params.cart_id;

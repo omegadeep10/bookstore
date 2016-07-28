@@ -10,8 +10,9 @@
         <ul class="cf">
             <a href="/"><h1>Deep's Bookstore</h1></a>
             <% if (locals.user) { %>
-            <li><a href="/store">Store</a></li>
             <li><a href="/logout">Logout</a></li>
+            <li><a href="/store">Store</a></li>
+            <li><a href="/store/orders">Orders</a></li>
             <%} else { %>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>

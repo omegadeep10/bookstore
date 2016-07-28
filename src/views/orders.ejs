@@ -37,30 +37,22 @@
             <% } %>
         </div>
 
-        <form action="/store/checkout" method="post">
-            <div class="financial-info">
-            <h2>Almost Done! Just Enter Shipping Information:</h2>
-                <div class="form-group">
-                    <label>Address</label>
-                    <input type="text" class="form-control" name="address">
-                </div>
-                <div class="form-group">
-                    <label>City</label>
-                    <input type="text" class="form-control" name="city">
-                </div>
-                <div class="form-group">
-                    <label>State</label>
-                    <input style="max-width: 30px;" type="text" maxlength="2" class="form-control" name="state">
-                </div>
-                <div class="form-group">
-                    <label>ZipCode</label>
-                    <input type="text" 
-       onkeyup="this.value=this.value.replace(/[^\d]/,'')" maxlength="5" class="form-control" name="zip">
-                </div>
-            </div>
-
-            <button type="submit" class="btn">Place My Order</button>
-        </form>
+        <div class="orders">
+            <h1>Your Orders</h1>
+            <% if (locals.orders) { %>
+                <% for (var i = 0; i < orders.length; i++){ %>
+                <a href="/store/orders/<%=orders[i].order_no%>" class="order-item">
+                    <h3 class="recieved-date">Recieved: <%=orders[i].received_date%> - Shipped: <%=orders[i].shipped%></h3>
+                    <p class="address"><%=orders[i].shipped_address%>, <%=orders[i].shipped_city%> <%=orders[i].shipped_state%> <%=orders[i].shipped_zip%></p>
+                </a>
+                <% } %>
+            <% } %>
+            <a href="/store/orders/order-id" class="order-item">
+                <h3 class="recieved-date">Recieved: July 27, 2016 - Shipped: False</h3>
+                <p class="address">123 Main Street, Dublin GA 31021</p>
+            </a>
+        </div>
+        <a href="/store" class="button">Back to Store</a>
     </div>
 </body>
 </html>
