@@ -4,6 +4,7 @@
     <title>Store</title>
     <link href="https://fonts.googleapis.com/css?family=Francois+One|Open+Sans" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.2.0/list.min.js"></script>
 </head>
 <body>
     <nav>
@@ -28,13 +29,16 @@
                 <p class="notify success"><%=success_msg %></p>
             <% } %>
         </div>
-        <div class="books-list">
+        <form action="/store/search" method="post">
+            <input class="search" type="text" name="search" placeholder="Search by author, title, price, or isbn">
+        </form>
+        <div class="books-list" id="books">
             <% if (locals.books) { %>
                 <% for (var i = 0; i < books.length; i++){ %>
                     <a href="/store/cart/add/<%=books[i].book_id%>" class="book-item">
                         <span class="price"><%= books[i].price %></span>
                         <p class="hover-text"></p>
-                        <h3><%= books[i].title %></h3>
+                        <h3 class="title"><%= books[i].title %></h3>
                         <p class="author"><%= books[i].author %> - <%=books[i].subject%> - <%=books[i].isbn%></p>
                     </a>
                 <% } %>
@@ -42,7 +46,7 @@
         </div>
         <div class="sidebar">
             <div class="cart cf">
-                <h1>Your Cart</h1>
+                <h1>Your Cart Total: <%=cart_total[0][0].total%></h1>
                 <% if (locals.cart) { %>
                     <% for(var i = 0; i < cart[0].length; i++) { %>
                     <a href="/store/cart/remove/<%=cart[0][i].cart_id%>" class="cart-item">
@@ -64,6 +68,6 @@
                 <% } %>
             </div>
         </div>
-    </div>  
+    </div>
 </body>
 </html>

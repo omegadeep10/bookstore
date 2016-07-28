@@ -45,15 +45,19 @@ authRouter.get('/', ensureAuthenticated, function(req, res) {
                         callback(null, results);
                     }
                 });
-            }
+            },
     }, function(error, results) {
-        res.render('store', {
-            error_msg: req.flash('error_msg'), 
-            success_msg: req.flash('success_msg'), 
-            user: req.user,
-            books: results.books,
-            cart: results.cart,
-            subjects: results.subjects
+        db.query('CALL getCartTotal(?)', [req.user.email], function(err, rows, fields) {
+            if (err) throw err;
+            res.render('store', {
+                error_msg: req.flash('error_msg'), 
+                success_msg: req.flash('success_msg'), 
+                user: req.user,
+                books: results.books,
+                cart: results.cart,
+                subjects: results.subjects,
+                cart_total: rows
+            });
         });
     });
 });
@@ -111,13 +115,17 @@ authRouter.get('/sort/:subject', ensureAuthenticated, function(req, res) {
                 });
             }
     }, function(error, results) {
-        res.render('store', {
-            error_msg: req.flash('error_msg'), 
-            success_msg: req.flash('success_msg'), 
-            user: req.user,
-            books: results.books,
-            cart: results.cart,
-            subjects: results.subjects
+        db.query('CALL getCartTotal(?)', [req.user.email], function(err, rows, fields) {
+            if (err) throw err;
+            res.render('store', {
+                error_msg: req.flash('error_msg'), 
+                success_msg: req.flash('success_msg'), 
+                user: req.user,
+                books: results.books,
+                cart: results.cart,
+                subjects: results.subjects,
+                cart_total: rows
+            });
         });
     });
 });
@@ -138,6 +146,86 @@ authRouter.get('/checkout', ensureAuthenticated, function(req, res) {
     });
 });
 
+authRouter.post('/checkout', function(req, res) {
+
+    req.checkBody('address', 'Address required').notEmpty();
+    req.checkBody('city', 'City required').notEmpty();
+    req.checkBody('state', 'State required').notEmpty();
+    req.checkBody('zip', 'Zipcode required').notEmpty();
+
+    var errors = req.validationErrors();
+    if (errors) {
+        res.render('register', {
+            errors: errors,
+            error_msg: req.flash('error_msg'), 
+            success_msg: req.flash('success_msg'),
+            user: req.user
+        })
+    }
+    else { 
+        db.query('CALL normalCheckout(?, ?, ?, ?, ?)', 
+            [req.user.email, req.body.address, req.body.city, req.body.state, req.body.zip], 
+            function(err, result) {
+            if (err) throw err;
+        });
+        req.flash('success_msg', 'Your order has been successfully placed.');
+        res.render('checkout', {
+            error_msg: req.flash('error_msg'), 
+            success_msg: req.flash('success_msg'),
+            user: req.user
+        });
+    }
+});
+
+authRouter.post('/search', ensureAuthenticated, function(req, res) {
+    var searchTerm =  '%' + req.body.search + '%';
+    async.parallel({
+        books: function(callback) {
+                db.query('SELECT * FROM books WHERE title LIKE ' + db.escape(searchTerm) + ' OR price LIKE ' + db.escape(searchTerm) + ' OR author LIKE ' + db.escape(searchTerm) + ' OR isbn LIKE ' + db.escape(searchTerm) + ';', 
+                    function(error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    }
+                    else {
+                        callback(null, results);
+                    }
+                });
+            },
+        cart: function(callback) {
+                db.query('CALL getCartForUserEmail(?);', [req.user.email], function(error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    }
+                    else {
+                        callback(null, results);
+                    }
+                });
+            },
+        subjects: function(callback) {
+                db.query('SELECT DISTINCT subject FROM books ORDER BY subject;', function(error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    }
+                    else {
+                        callback(null, results);
+                    }
+                });
+            }
+    }, function(error, results) {
+        db.query('CALL getCartTotal(?)', [req.user.email], function(err, rows, fields) {
+            if (err) throw err;
+            res.render('store', {
+                error_msg: req.flash('error_msg'), 
+                success_msg: req.flash('success_msg'), 
+                user: req.user,
+                books: results.books,
+                cart: results.cart,
+                subjects: results.subjects,
+                cart_total: rows
+            });
+        });
+    });
+});
 
 //this route takes in a database connection.
 module.exports = function(dbConnection){

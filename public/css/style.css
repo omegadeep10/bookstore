@@ -99,6 +99,18 @@ form .form-group {
   max-width: 800px;
   margin: 20px 0; }
 
+.search {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: none;
+  border-bottom: 2px solid black;
+  margin-bottom: 50px;
+  font-family: "Francois One", Georgia, serif;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 15px 0; }
+
 .books-list {
   width: 65%;
   display: inline-block;
@@ -143,7 +155,8 @@ form .form-group {
 .sidebar {
   width: 34%;
   display: inline-block;
-  vertical-align: top; }
+  vertical-align: top;
+  padding-top: 20px; }
 
 .cart {
   vertical-align: top;
