@@ -203,7 +203,7 @@ authRouter.post('/checkout', function(req, res) {
 
     var errors = req.validationErrors();
     if (errors) {
-        res.render('register', {
+        res.render('checkout', {
             errors: errors,
             error_msg: req.flash('error_msg'), 
             success_msg: req.flash('success_msg'),
