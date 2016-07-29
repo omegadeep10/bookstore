@@ -224,13 +224,14 @@ form .form-group {
       background-color: #ab3428; }
 
 .orders {
-  margin-bottom: 70px; }
+  margin-bottom: 50px; }
   .orders h1 {
     margin-bottom: 40px;
     font-size: 25px; }
   .orders .order-item {
     display: block;
-    text-decoration: none; }
+    text-decoration: none;
+    margin: 20px 0; }
     .orders .order-item:hover h3 {
       color: #ab3428; }
     .orders .order-item:hover p {
@@ -240,6 +241,25 @@ form .form-group {
       font-weight: normal;
       font-size: 20px;
       margin: 5px 0;
-      color: black; }
+      color: #333; }
+
+.order-items {
+  margin-bottom: 70px; }
+  .order-items h2 {
+    font-family: "Francois One", Georgia, serif;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+    margin-bottom: 30px; }
+  .order-items .order-item-unit {
+    max-width: 500px;
+    margin: 20px 0; }
+    .order-items .order-item-unit p {
+      color: #111; }
+    .order-items .order-item-unit span {
+      float: right;
+      font-family: "Open Sans", Helvetica, sans-serif;
+      color: #111; }
 
 /*# sourceMappingURL=style.css.map */

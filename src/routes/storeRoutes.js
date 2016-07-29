@@ -69,7 +69,43 @@ authRouter.get('/orders', ensureAuthenticated, function(req, res) {
             error_msg: req.flash('error_msg'), 
             success_msg: req.flash('success_msg'), 
             user: req.user,
-            orders: results
+            orders: results[0]
+        });
+    });
+});
+
+authRouter.get('/orders/:order_id', ensureAuthenticated, function(req, res) {
+    var order_id = req.params.order_id;
+    var order_query = "SELECT order_no, DATE_FORMAT(received_date, '%M %d, %Y') AS received_date, IFNULL(DATE_FORMAT(shipped_date, '%M %d, %Y'), 'FALSE') AS shipped_date, shipped_address, shipped_city, shipped_state, shipped_zip FROM orders WHERE order_no = ?;";
+    var details_query = "SELECT title, quantity, order_details.price * quantity AS price FROM order_details JOIN books ON order_details.book_id = books.book_id WHERE order_no = ?;";
+    async.parallel({
+        orders: function(callback) {
+                db.query(order_query, [order_id], function(error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    }
+                    else {
+                        callback(null, results);
+                    }
+                });
+            },
+        order_items: function(callback) {
+                db.query(details_query, [order_id], function(error, results, fields) {
+                    if (error) {
+                        callback(error);
+                    }
+                    else {
+                        callback(null, results);
+                    }
+                });
+            }
+    }, function(error, results) {
+        res.render('order-items', {
+            error_msg: req.flash('error_msg'), 
+            success_msg: req.flash('success_msg'), 
+            user: req.user,
+            orders: results.orders,
+            order_items: results.order_items,
         });
     });
 });

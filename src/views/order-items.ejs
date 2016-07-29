@@ -38,13 +38,23 @@
         </div>
 
         <div class="orders">
-            <h1>Your Orders</h1>
             <% if (locals.orders) { %>
                 <% for (var i = 0; i < orders.length; i++){ %>
                 <a href="/store/orders/<%=orders[i].order_no%>" class="order-item">
                     <h3 class="recieved-date">Recieved: <%=orders[i].received_date%> - Shipped: <%=orders[i].shipped_date%></h3>
                     <p class="address"><%=orders[i].shipped_address%>, <%=orders[i].shipped_city%> <%=orders[i].shipped_state%> <%=orders[i].shipped_zip%></p>
                 </a>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="order-items">
+            <h2>This order contains: </h2>
+            <% if (locals.order_items) { %>
+                <% for (var i = 0; i < order_items.length; i++){ %>
+                <div class="order-item-unit">
+                    <span><%=order_items[i].price%></span>
+                    <p><%=order_items[i].title%>&nbsp;  x  &nbsp;<%=order_items[i].quantity%></p>
+                </div>
                 <% } %>
             <% } %>
         </div>
